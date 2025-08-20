@@ -3,7 +3,7 @@ from database import *
 import random
 def signup():
     username = input("create username: ")
-    temp = cursor.execute(f"SELECT username FROM customers where username = '{username}';")
+    temp = db_query(f"SELECT username FROM customers where username = '{username}';")
     if temp:
         print("username already exist")
         signup()
@@ -14,12 +14,16 @@ def signup():
         age=input("enter your age: ")
         city= input("enter your city: ")
         while True:
-            account_number = random.randint(10000000, 99999999)
-            temp = db_query(f"SELECT account_number FROM customers WHERE account_numer = '{account_number}';")
+            #account_number =generate_unique_account_number()
+            account_number=int(random.randint(10000000, 99999999))
+            #random.randint(10000000, 99999999)
+            #print(account_number)
+            temp = db_query(f"SELECT account_number FROM customers WHERE account_number = '{account_number}';")
             if temp:
                 continue
             else:
-                pass
+                print(account_number)
+                break
 
 
 

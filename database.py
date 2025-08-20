@@ -11,7 +11,9 @@ mydb=sql.connect(
 cursor=mydb.cursor()
 
 def db_query(str):
-    return cursor.execute(str)
+     cursor.execute(str)
+     result= cursor.fetchall()
+     return result
 
 def createcustomertable():
     cursor.execute('''
